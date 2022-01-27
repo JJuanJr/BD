@@ -25,7 +25,7 @@ insert into operando(valor1, valor2, operacion, total, id) values
 (3, 6, 3, 18, 3);
 
 
--- IF, TRIGGRE
+-- IF, TRIGGER
 
 create or replace function pasar() returns Trigger as
 $$
