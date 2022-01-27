@@ -3,11 +3,11 @@ create database operacion;
 \c operacion;
 
 create table operando (
+id int not null primary key,
 valor1 int not null,
 valor2 int not null,
 operacion int not null,
-total int not null,
-id int not null primary key
+total int not null
 );
 
 create table aud_operando (
@@ -50,3 +50,18 @@ create trigger op_insert
 	before insert on operando
 	for each row
 	execute procedure pasar();
+
+insert into operando(id, valor1, valor2, operacion) values
+(4, 2, 4, 1)
+(5, 10, 4, 2)
+(6, 6, 3, 3);
+
+-- CASE
+
+select operando.id, operando.valor1, operando.valor2, operando.operacion, operando.total
+case
+	when operando.valor1 > operando.valor2 then 'Maximo'
+	when operando.valor1 = operando.valor2 then 'Iguales'
+end intervalo
+from operando
+order by operando.id asc;
