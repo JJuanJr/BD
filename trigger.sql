@@ -25,7 +25,7 @@ insert into operando(valor1, valor2, operacion, total, id) values
 (3, 6, 3, 18, 3);
 
 
--- IF
+-- IF, TRIGGRE
 
 create or replace function pasar() returns Trigger as
 $$
@@ -65,3 +65,16 @@ case
 end intervalo
 from operando
 order by operando.id asc;
+
+-- Usuarios
+
+create user supervisor with password 'supervisor';
+grant select, insert, update, delete on avion to supervisor;
+grant insert, select, update on aerolinea, vuelo to supervisor;
+grant insert, select on ticket to supervisor;
+grant select on piloto,azafata to supervisor;
+
+create user cliente with password 'cliente';
+grant insert, select, update on ticket to cliente;
+grant select on vuelo,aerolinea,avion to cliente;
+grant insert,select,update,delete on piloto, azafata to cliente;
