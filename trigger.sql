@@ -62,6 +62,8 @@ select operando.id, operando.valor1, operando.valor2, operando.operacion, operan
 case
 	when operando.valor1 > operando.valor2 then 'Maximo'
 	when operando.valor1 = operando.valor2 then 'Iguales'
+else
+	'Minimo'
 end intervalo
 from operando
 order by operando.id asc;
