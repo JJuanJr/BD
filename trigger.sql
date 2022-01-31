@@ -89,3 +89,7 @@ grant cliente_rol to cliente;
 
 create user supervisor with password 'supervisor';
 grant supervisor_rol to cliente;
+
+-- Copia
+pg_dump -U usuario -W -h host basename > basename.sql
+psql -U username -W -h host basename < basename.sql
