@@ -88,7 +88,7 @@ create user cliente with password 'cliente';
 grant cliente_rol to cliente;
 
 create user supervisor with password 'supervisor';
-grant supervisor_rol to cliente;
+grant supervisor_rol to supervisor;
 
 -- Copia
 pg_dump -U usuario -W -h host basename > basename.sql
