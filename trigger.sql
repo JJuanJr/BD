@@ -70,19 +70,22 @@ order by operando.id asc;
 
 -- Usuarios
 
+create user superusuario password 'superusuario';
+alter role superusuario with superuser;
+
 create role supervisor_rol;
-grant select, insert, update, delete on avion to supervisor;
-grant insert, select, update on aerolinea, vuelo to supervisor;
-grant insert, select on ticket to supervisor;
-grant select on piloto,azafata to supervisor;
+grant select, insert, update, delete on avion to supervisor_rol;
+grant insert, select, update on aerolinea, vuelo to supervisor_rol;
+grant insert, select on ticket to supervisor_rol;
+grant select on piloto,azafata to supervisor_rol;
 
 create role cliente_rol;
-grant insert, select, update on ticket to cliente;
-grant select on vuelo,aerolinea,avion to cliente;
-grant insert,select,update,delete on piloto, azafata to cliente;
+grant insert, select, update on ticket to cliente_rol;
+grant select on vuelo,aerolinea,avion to cliente_rol;
+grant insert,select,update,delete on piloto, azafata to cliente_rol;
 
 create user cliente with password 'cliente';
 grant cliente_rol to cliente;
 
 create user supervisor with password 'supervisor';
-grant cliente_rol to cliente;
+grant supervisor_rol to cliente;
